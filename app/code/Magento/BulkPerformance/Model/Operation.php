@@ -16,7 +16,7 @@ class Operation extends DataObject implements OperationInterface
     /**
      * @inheritDoc
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->getData(self::ID);
     }
@@ -24,7 +24,7 @@ class Operation extends DataObject implements OperationInterface
     /**
      * @inheritDoc
      */
-    public function setId($id)
+    public function setId(int $id): OperationInterface
     {
         return $this->setData(self::ID, $id);
     }
@@ -32,7 +32,7 @@ class Operation extends DataObject implements OperationInterface
     /**
      * @inheritDoc
      */
-    public function getBulkUuid()
+    public function getBulkUuid(): ?string
     {
         return $this->getData(self::BULK_ID);
     }
@@ -40,7 +40,7 @@ class Operation extends DataObject implements OperationInterface
     /**
      * @inheritDoc
      */
-    public function setBulkUuid($bulkId)
+    public function setBulkUuid(string $bulkId): OperationInterface
     {
         return $this->setData(self::BULK_ID, $bulkId);
     }
@@ -48,7 +48,7 @@ class Operation extends DataObject implements OperationInterface
     /**
      * @inheritDoc
      */
-    public function getTopicName()
+    public function getTopicName(): ?string
     {
         return $this->getData(self::TOPIC_NAME);
     }
@@ -56,7 +56,7 @@ class Operation extends DataObject implements OperationInterface
     /**
      * @inheritDoc
      */
-    public function setTopicName($topic)
+    public function setTopicName(string $topic): OperationInterface
     {
         return $this->setData(self::TOPIC_NAME, $topic);
     }
@@ -64,7 +64,7 @@ class Operation extends DataObject implements OperationInterface
     /**
      * @inheritDoc
      */
-    public function getSerializedData()
+    public function getSerializedData(): ?string
     {
         return $this->getData(self::SERIALIZED_DATA);
     }
@@ -72,7 +72,7 @@ class Operation extends DataObject implements OperationInterface
     /**
      * @inheritDoc
      */
-    public function setSerializedData($serializedData)
+    public function setSerializedData(?string $serializedData): OperationInterface
     {
         return $this->setData(self::SERIALIZED_DATA, $serializedData);
     }
@@ -80,7 +80,7 @@ class Operation extends DataObject implements OperationInterface
     /**
      * @inheritDoc
      */
-    public function getResultSerializedData()
+    public function getResultSerializedData(): ?string
     {
         return $this->getData(self::RESULT_SERIALIZED_DATA);
     }
@@ -88,7 +88,7 @@ class Operation extends DataObject implements OperationInterface
     /**
      * @inheritDoc
      */
-    public function setResultSerializedData($resultSerializedData)
+    public function setResultSerializedData(?string $resultSerializedData): OperationInterface
     {
         return $this->setData(self::RESULT_SERIALIZED_DATA, $resultSerializedData);
     }
@@ -96,7 +96,7 @@ class Operation extends DataObject implements OperationInterface
     /**
      * @inheritDoc
      */
-    public function getStatus()
+    public function getStatus(): ?int
     {
         return $this->getData(self::STATUS);
     }
@@ -104,7 +104,7 @@ class Operation extends DataObject implements OperationInterface
     /**
      * @inheritDoc
      */
-    public function setStatus($status)
+    public function setStatus(int $status): OperationInterface
     {
         return $this->setData(self::STATUS, $status);
     }
@@ -112,7 +112,7 @@ class Operation extends DataObject implements OperationInterface
     /**
      * @inheritDoc
      */
-    public function getResultMessage()
+    public function getResultMessage(): ?string
     {
         return $this->getData(self::RESULT_MESSAGE);
     }
@@ -120,7 +120,7 @@ class Operation extends DataObject implements OperationInterface
     /**
      * @inheritDoc
      */
-    public function setResultMessage($resultMessage)
+    public function setResultMessage(?string $resultMessage): OperationInterface
     {
         return $this->setData(self::RESULT_MESSAGE, $resultMessage);
     }
@@ -128,7 +128,7 @@ class Operation extends DataObject implements OperationInterface
     /**
      * @inheritDoc
      */
-    public function getErrorCode()
+    public function getErrorCode(): ?string
     {
         return $this->getData(self::ERROR_CODE);
     }
@@ -136,7 +136,7 @@ class Operation extends DataObject implements OperationInterface
     /**
      * @inheritDoc
      */
-    public function setErrorCode($errorCode)
+    public function setErrorCode(?string $errorCode): OperationInterface
     {
         return $this->setData(self::ERROR_CODE, $errorCode);
     }
@@ -144,7 +144,7 @@ class Operation extends DataObject implements OperationInterface
     /**
      * @inheritDoc
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?string
     {
         return $this->getData(self::CREATED_AT);
     }
@@ -152,7 +152,7 @@ class Operation extends DataObject implements OperationInterface
     /**
      * @inheritDoc
      */
-    public function getFinishedAt()
+    public function getFinishedAt(): ?string
     {
         return $this->getData(self::FINISHED_AT);
     }
@@ -160,7 +160,7 @@ class Operation extends DataObject implements OperationInterface
     /**
      * @inheritDoc
      */
-    public function setFinishedAt($date)
+    public function setFinishedAt(?string $date): OperationInterface
     {
         return $this->setData(self::FINISHED_AT, $date);
     }
@@ -170,7 +170,7 @@ class Operation extends DataObject implements OperationInterface
      *
      * @return \Magento\AsynchronousOperations\Api\Data\OperationExtensionInterface|null
      */
-    public function getExtensionAttributes()
+    public function getExtensionAttributes(): \Magento\AsynchronousOperations\Api\Data\OperationExtensionInterface
     {
         return $this->getData(self::EXTENSION_ATTRIBUTES_KEY);
     }
@@ -183,7 +183,7 @@ class Operation extends DataObject implements OperationInterface
      */
     public function setExtensionAttributes(
         \Magento\AsynchronousOperations\Api\Data\OperationExtensionInterface $extensionAttributes
-    ) {
+    ): OperationInterface {
         return $this->setData(self::EXTENSION_ATTRIBUTES_KEY, $extensionAttributes);
     }
 }

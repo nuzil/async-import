@@ -64,7 +64,7 @@ class OperationManagement implements \Magento\Framework\Bulk\OperationManagement
             $operationEntity->setStatus($status);
             $operationEntity->setResultMessage($message);
             $operationEntity->setSerializedData($data);
-            $operationEntity->setFinishedAt(date("Y-m-d H:i:s"));
+            $operationEntity->setFinishedAt(time());
             $operationEntity->setResultSerializedData($resultData);
             $this->entityManager->save($operationEntity);
         } catch (\Exception $exception) {

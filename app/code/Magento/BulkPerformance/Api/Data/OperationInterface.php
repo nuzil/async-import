@@ -41,10 +41,10 @@ interface OperationInterface extends \Magento\Framework\Api\ExtensibleDataInterf
     /**
      * Operation id
      *
-     * @return int
+     * @return int|null
      * @since 100.2.0
      */
-    public function getId();
+    public function getId(): ?int;
 
     /**
      * Set operation id
@@ -53,15 +53,15 @@ interface OperationInterface extends \Magento\Framework\Api\ExtensibleDataInterf
      * @return $this
      * @since 100.2.0
      */
-    public function setId($id);
+    public function setId(int $id): OperationInterface;
 
     /**
      * Get bulk uuid
      *
-     * @return string
+     * @return string|null
      * @since 100.2.0
      */
-    public function getBulkUuid();
+    public function getBulkUuid(): ?string;
 
     /**
      * Set bulk uuid
@@ -70,15 +70,15 @@ interface OperationInterface extends \Magento\Framework\Api\ExtensibleDataInterf
      * @return $this
      * @since 100.2.0
      */
-    public function setBulkUuid($bulkId);
+    public function setBulkUuid(string $bulkId): OperationInterface;
 
     /**
      * Message Queue Topic
      *
-     * @return string
+     * @return string|null
      * @since 100.2.0
      */
-    public function getTopicName();
+    public function getTopicName(): ?string;
 
     /**
      * Set message queue topic
@@ -87,51 +87,49 @@ interface OperationInterface extends \Magento\Framework\Api\ExtensibleDataInterf
      * @return $this
      * @since 100.2.0
      */
-    public function setTopicName($topic);
+    public function setTopicName(string $topic): OperationInterface;
 
     /**
      * Serialized Data
      *
-     * @return string
+     * @return string|null
      * @since 100.2.0
      */
-    public function getSerializedData();
+    public function getSerializedData(): ?string;
 
     /**
      * Set serialized data
      *
-     * @param string $serializedData
+     * @param string|null $serializedData
      * @return $this
      * @since 100.2.0
      */
-    public function setSerializedData($serializedData);
+    public function setSerializedData(?string $serializedData): OperationInterface;
 
     /**
      * Result serialized Data
      *
-     * @return string
+     * @return string|null
      * @since 100.3.0
      */
-    public function getResultSerializedData();
+    public function getResultSerializedData(): ?string;
 
     /**
      * Set result serialized data
      *
-     * @param string $resultSerializedData
+     * @param string|null $resultSerializedData
      * @return $this
      * @since 100.3.0
      */
-    public function setResultSerializedData($resultSerializedData);
+    public function setResultSerializedData(?string $resultSerializedData): OperationInterface;
 
     /**
      * Get operation status
      *
-     * OPEN | COMPLETE | RETRIABLY_FAILED | NOT_RETRIABLY_FAILED
-     *
-     * @return int
+     * @return int|null
      * @since 100.2.0
      */
-    public function getStatus();
+    public function getStatus(): ?int;
 
     /**
      * Set status
@@ -140,64 +138,64 @@ interface OperationInterface extends \Magento\Framework\Api\ExtensibleDataInterf
      * @return $this
      * @since 100.2.0
      */
-    public function setStatus($status);
+    public function setStatus(int $status): OperationInterface;
 
     /**
      * Get result message
      *
-     * @return string
+     * @return string|null
      * @since 100.2.0
      */
-    public function getResultMessage();
+    public function getResultMessage(): ?string;
 
     /**
      * Set result message
      *
-     * @param string $resultMessage
+     * @param string|null $resultMessage
      * @return $this
      * @since 100.2.0
      */
-    public function setResultMessage($resultMessage);
+    public function setResultMessage(?string $resultMessage): OperationInterface;
 
     /**
      * Get created at
      *
-     * @return string
+     * @return string|null
      * @since 100.2.0
      */
-    public function getCreatedAt();
+    public function getCreatedAt(): ?string;
 
     /**
      * Get finished at
      *
-     * @return string
+     * @return string|null
      * @since 100.2.0
      */
-    public function getFinishedAt();
+    public function getFinishedAt(): ?string;
 
     /**
      * Set finished at
      *
-     * @param string $date
+     * @param string|null $date
      * @return $this
      * @since 100.2.0
      */
-    public function setFinishedAt($date);
+    public function setFinishedAt(?string $date): OperationInterface;
 
     /**
      * Get error code
      *
-     * @return int
+     * @return int|null
      * @since 100.2.0
      */
-    public function getErrorCode();
+    public function getErrorCode(): ?string;
 
     /**
      * Set error code
      *
-     * @param int $errorCode
+     * @param int|null $errorCode
      * @return $this
      * @since 100.2.0
      */
-    public function setErrorCode($errorCode);
+    public function setErrorCode(?string $errorCode): OperationInterface;
 }
