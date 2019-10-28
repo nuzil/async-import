@@ -38,7 +38,8 @@ class Base64Validator implements SourceValidatorInterface
         $errors = [];
         $sourceDefinition = (string)$source->getSourceDefinition();
 
-        if (!preg_match('%^[a-zA-Z0-9/+]*={0,2}$%', $sourceDefinition)) {
+        if ($source->getSourceType() === SourceInterface::SOURCE_TYPE_BASE64_ENCODED_DATA
+            && !preg_match('%^[a-zA-Z0-9/+]*={0,2}$%', $sourceDefinition)) {
             $errors[] = __(
                 'Invalid "%field". Base64 import data string is invalid.',
                 ['field' => SourceInterface::SOURCE_DEFINITION]
