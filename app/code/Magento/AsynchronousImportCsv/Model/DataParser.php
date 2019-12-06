@@ -20,7 +20,17 @@ class DataParser implements DataParserInterface
      */
     public function execute(array $data, CsvFormatInterface $csvFormat = null): array
     {
-        $parsedData = array_map('str_getcsv', $data);
+        $parsedData = [];
+        $headerValues = [];
+        foreach ($data as $index => $row) {
+            $rowParsed = str_getcsv($row, $csvFormat->getDelimiter(), $csvFormat->getEnclosure(), $csvFormat->getEscape());
+            if ($index == 0) {
+                $headerValues = $rowParsed;
+                continue;
+            }
+            if (count($headerValues) != count($rowParsed)) continue;
+            $parsedData[] = array_combine($headerValues, $rowParsed);
+        }
         return $parsedData;
     }
 }
