@@ -10,12 +10,23 @@ namespace Magento\AsynchronousImportAdvancedPricing\Model\DataExchangingStrategy
 use Magento\AsynchronousImportDataExchangingApi\Api\Data\ImportInterface;
 use Magento\AsynchronousImportDataExchangingApi\Model\ExchangeDataBehaviourInterface;
 use Magento\AsynchronousImportDataExchanging\Model\ExchangeAdaptersRegistry;
+use Magento\AsynchronousImportDataExchangingApi\Api\ExchangeAdapterInterface;
 
 /**
  * @inheritdoc
  */
 class Add implements ExchangeDataBehaviourInterface
 {
+
+    /**
+     * @var ExchangeAdaptersRegistry
+     */
+    private $exchangeAdaptersRegistry;
+
+    /**
+     * @var ExchangeAdapterInterface
+     */
+    private $exchangeAdapter;
 
     /**
      * Add constructor.
@@ -26,6 +37,8 @@ class Add implements ExchangeDataBehaviourInterface
         ExchangeAdaptersRegistry $exchangeAdaptersRegistry
     ) {
         $this->exchangeAdaptersRegistry = $exchangeAdaptersRegistry;
+        $this->exchangeAdapter = $exchangeAdaptersRegistry->get();
+
     }
 
     /**
@@ -33,11 +46,12 @@ class Add implements ExchangeDataBehaviourInterface
      *
      * @param ImportInterface $import
      * @param array $importData
+     *
+     * @return void
      */
     public function execute(ImportInterface $import, array $importData): void
     {
-        $adapter = $this->exchangeAdaptersRegistry->get();
-        $adapter->execute($import, $importData);
+        $this->exchangeAdapter->execute($import, $importData);
     }
 
 }

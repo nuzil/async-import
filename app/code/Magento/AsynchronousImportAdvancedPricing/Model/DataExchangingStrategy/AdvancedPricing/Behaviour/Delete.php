@@ -9,6 +9,8 @@ namespace Magento\AsynchronousImportAdvancedPricing\Model\DataExchangingStrategy
 
 use Magento\AsynchronousImportDataExchangingApi\Api\Data\ImportInterface;
 use Magento\AsynchronousImportDataExchangingApi\Model\ExchangeDataBehaviourInterface;
+use Magento\AsynchronousImportDataExchanging\Model\ExchangeAdaptersRegistry;
+use Magento\AsynchronousImportDataExchangingApi\Api\ExchangeAdapterInterface;
 
 /**
  * @inheritdoc
@@ -17,14 +19,39 @@ class Delete implements ExchangeDataBehaviourInterface
 {
 
     /**
-     * Execute Delete operation
+     * @var ExchangeAdaptersRegistry
+     */
+    private $exchangeAdaptersRegistry;
+
+    /**
+     * @var ExchangeAdapterInterface
+     */
+    private $exchangeAdapter;
+
+    /**
+     * Add constructor.
+     *
+     * @param ExchangeAdaptersRegistry $exchangeAdaptersRegistry
+     */
+    public function __construct(
+        ExchangeAdaptersRegistry $exchangeAdaptersRegistry
+    ) {
+        $this->exchangeAdaptersRegistry = $exchangeAdaptersRegistry;
+        $this->exchangeAdapter = $exchangeAdaptersRegistry->get();
+
+    }
+
+    /**
+     * Execute Add operation for Advanced Pricing
      *
      * @param ImportInterface $import
      * @param array $importData
+     *
+     * @return void
      */
     public function execute(ImportInterface $import, array $importData): void
     {
-        exit;
+        $this->exchangeAdapter->execute($import, $importData);
     }
 
 }

@@ -22,7 +22,9 @@ interface ExchangeAdapterInterface
      *
      * @param ImportInterface $import
      * @param array $importData
+     *
      * @return void
+     *
      * @throws ValidationException
      * @throws ImportDataExchangeException
      */

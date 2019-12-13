@@ -21,6 +21,7 @@ interface ExchangeDataBehaviourInterface
      *
      * @param ImportInterface $import
      * @param array $importData
+     *
      * @return void
      */
     public function execute(ImportInterface $import, array $importData): void;

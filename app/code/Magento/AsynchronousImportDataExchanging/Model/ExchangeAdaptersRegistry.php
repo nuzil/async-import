@@ -7,8 +7,7 @@ declare(strict_types=1);
 
 namespace Magento\AsynchronousImportDataExchanging\Model;
 
-use Magento\AsynchronousImportDataExchangingApi\Api\Data\ImportInterface;
-use Magento\Framework\Validation\ValidationException;
+use Magento\AsynchronousImportDataExchangingApi\Api\ExchangeAdapterInterface;
 
 /**
  * Registry for receive processors of import data
@@ -29,6 +28,11 @@ class ExchangeAdaptersRegistry
         $this->exchangeAdapters = $exchangeAdapters;
     }
 
+    /**
+     * Receive exchange adapter based on system configuration
+     *
+     * @return ExchangeAdapterInterface
+     */
     public function get(){
 
         /**

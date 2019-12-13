@@ -5,10 +5,9 @@
  */
 declare(strict_types=1);
 
-namespace Magento\AsynchronousImportDataExchanging\Model\DataExchangingAdapter;
+namespace Magento\AsynchronousImportApiExchangeAdapter\Model\DataExchangingAdapter;
 
 use Magento\AsynchronousImportDataExchangingApi\Api\Data\ImportInterface;
-use Magento\Framework\Validation\ValidationException;
 use Magento\AsynchronousImportDataExchangingApi\Api\ExchangeAdapterInterface;
 
 /**
@@ -18,6 +17,11 @@ use Magento\AsynchronousImportDataExchangingApi\Api\ExchangeAdapterInterface;
  */
 class Api implements ExchangeAdapterInterface
 {
+
+    /**
+     * @var array Exchanging properties
+     */
+    private $exchangingProperties;
 
     /**
      * Api constructor.
@@ -34,12 +38,11 @@ class Api implements ExchangeAdapterInterface
      *
      * @param ImportInterface $import
      * @param array $importData
+     *
+     * @return void
      */
-    public function execute(ImportInterface $import, array $importData): void{
-
-        echo "do Export via API here";
-        var_dump($this->exchangingProperties);
-        exit;
+    public function execute(ImportInterface $import, array $importData): void
+    {
 
     }
 
