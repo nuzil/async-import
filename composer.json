@@ -299,6 +299,7 @@
         "magento/module-asynchronous-import-data-exchanging-api": "*",
         "magento/module-asynchronous-import-source-data-retrieving": "*",
         "magento/module-asynchronous-import-source-data-retrieving-api": "*",
+        "magento/module-asynchronous-import-api-exchange-adapter":"*",
         "magento/module-csp": "*"
     },
     "conflict": {
