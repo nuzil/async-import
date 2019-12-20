@@ -20,6 +20,9 @@ use Magento\Framework\Validation\ValidationResultFactory;
 class ApplyConvertingRules implements ApplyConvertingRulesInterface
 {
 
+    /**
+    * Key for default apply strategy
+    */
     public const DEFAULT_APPLY_STRATEGIES_KEY = "default";
 
     /**
@@ -102,7 +105,8 @@ class ApplyConvertingRules implements ApplyConvertingRulesInterface
     /**
      * Filter stretegies based on system settings
      */
-    private function filterApplyStrategies(){
+    private function filterApplyStrategies()
+    {
 
         $activeApplyStrategies = [];
         foreach ($this->ruleApplyingStrategies as $strategyKey => $implementations) {
@@ -118,6 +122,5 @@ class ApplyConvertingRules implements ApplyConvertingRulesInterface
             $activeStrategy ? $activeApplyStrategies[$strategyKey] = $activeStrategy : false;
         }
         $this->ruleApplyingStrategies = $activeApplyStrategies;
-
     }
 }
