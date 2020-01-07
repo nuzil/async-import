@@ -16,21 +16,31 @@ use Magento\AsynchronousImportCsvApi\Model\DataParserInterface;
 class DataParser implements DataParserInterface
 {
     /**
+     * @var string
+     */
+    private $csvDelimiter;
+
+    /**
+     * @var string
+     */
+    private $csvEnclosure;
+
+    /**
+     * @var string
+     */
+    private $csvEscape;
+
+    /**
      * @inheritdoc
      */
     public function execute(array $data, CsvFormatInterface $csvFormat = null): array
     {
-        $parsedData = [];
-        $headerValues = [];
-        foreach ($data as $index => $row) {
-            $rowParsed = str_getcsv($row, $csvFormat->getDelimiter(), $csvFormat->getEnclosure(), $csvFormat->getEscape());
-            if ($index == 0) {
-                $headerValues = $rowParsed;
-                continue;
-            }
-            if (count($headerValues) != count($rowParsed)) continue;
-            $parsedData[] = array_combine($headerValues, $rowParsed);
-        }
-        return $parsedData;
+        $this->csvDelimiter = ($csvFormat->getDelimiter() ?: CsvFormatInterface::DEFAULT_DELIMITER);
+        $this->csvEnclosure = ($csvFormat->getEnclosure() ?: CsvFormatInterface::DEFAULT_ENCLOSURE);
+        $this->csvEscape = ($csvFormat->getEscape() ?: CsvFormatInterface::DEFAULT_ESCAPE);
+
+        return array_map(function ($data) {
+            return str_getcsv($data, $this->csvDelimiter, $this->csvEnclosure, $this->csvEscape);
+        }, $data);
     }
 }
