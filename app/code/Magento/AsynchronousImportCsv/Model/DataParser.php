@@ -35,9 +35,15 @@ class DataParser implements DataParserInterface
      */
     public function execute(array $data, CsvFormatInterface $csvFormat = null): array
     {
-        $this->csvDelimiter = ($csvFormat->getDelimiter() ?: CsvFormatInterface::DEFAULT_DELIMITER);
-        $this->csvEnclosure = ($csvFormat->getEnclosure() ?: CsvFormatInterface::DEFAULT_ENCLOSURE);
-        $this->csvEscape = ($csvFormat->getEscape() ?: CsvFormatInterface::DEFAULT_ESCAPE);
+        $this->csvDelimiter = CsvFormatInterface::DEFAULT_DELIMITER;
+        $this->csvEnclosure = CsvFormatInterface::DEFAULT_ENCLOSURE;
+        $this->csvEscape = CsvFormatInterface::DEFAULT_ESCAPE;
+
+        if ($csvFormat !== null){
+            $this->csvDelimiter = ($csvFormat->getDelimiter() ?: CsvFormatInterface::DEFAULT_DELIMITER);
+            $this->csvEnclosure = ($csvFormat->getEnclosure() ?: CsvFormatInterface::DEFAULT_ENCLOSURE);
+            $this->csvEscape = ($csvFormat->getEscape() ?: CsvFormatInterface::DEFAULT_ESCAPE);
+        }
 
         return array_map(function ($data) {
             return str_getcsv($data, $this->csvDelimiter, $this->csvEnclosure, $this->csvEscape);
