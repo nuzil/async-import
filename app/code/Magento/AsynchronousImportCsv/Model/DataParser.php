@@ -39,7 +39,7 @@ class DataParser implements DataParserInterface
         $this->csvEnclosure = CsvFormatInterface::DEFAULT_ENCLOSURE;
         $this->csvEscape = CsvFormatInterface::DEFAULT_ESCAPE;
 
-        if ($csvFormat !== null){
+        if ($csvFormat !== null) {
             $this->csvDelimiter = ($csvFormat->getDelimiter() ?: CsvFormatInterface::DEFAULT_DELIMITER);
             $this->csvEnclosure = ($csvFormat->getEnclosure() ?: CsvFormatInterface::DEFAULT_ENCLOSURE);
             $this->csvEscape = ($csvFormat->getEscape() ?: CsvFormatInterface::DEFAULT_ESCAPE);
